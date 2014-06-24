@@ -27,5 +27,33 @@ class_has 'entry_directory' => (
     default => sub { Path::Class::Dir->new( '', 'tmp', 'comp_entries' ) },
 );
 
+sub test_titles_for_oversimilarity {
+    my $self = shift;
+    my ( $proposed_title, $current_title ) = @_;
+
+    my $proposed_dirname = $self->directory_name_from( $proposed_title );
+    my $current_dirname = $current_title
+                          ? $self->directory_name_from( $current_title )
+                          : '';
+
+    unless ( $proposed_dirname eq $current_dirname ) {
+        for my $entry_dir ( $self->entry_directory->children ) {
+            if ( $proposed_dirname eq $entry_dir->basename ) {
+                die "Proposed dir $proposed_dirname matches existing dir $entry_dir.\n";
+            }
+        }
+    }
+}
+
+sub directory_name_from {
+    my $self = shift;
+    my ( $name ) = @_;
+
+    $name =~ s/\s+/_/g;
+    $name =~ s/[^\w\d]//g;
+
+    return $name;
+}
+
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
 1;

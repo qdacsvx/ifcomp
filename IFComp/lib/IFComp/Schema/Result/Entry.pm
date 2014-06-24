@@ -399,7 +399,14 @@ before title => sub {
     my $self = shift;
     if ( @_ ) {
         $self->previous_title( $self->title );
+        $self->result_source->schema->test_titles_for_oversimilarity( @_, $self->title );
     }
+};
+
+before insert => sub {
+    my $self = shift;
+
+    $self->result_source->schema->test_titles_for_oversimilarity( $self->title );
 };
 
 around update => sub {
@@ -407,8 +414,8 @@ around update => sub {
     my $self = shift;
 
     if ( $self->is_column_changed( 'title' ) ) {
-        my $old_dir = $self->_directory_name_from( $self->previous_title );
-        my $new_dir = $self->_directory_name_from( $self->title );
+        my $old_dir = $self->result_source->schema->directory_name_from( $self->previous_title );
+        my $new_dir = $self->result_source->schema->directory_name_from( $self->title );
 
         my $old_path = Path::Class::Dir->new(
             '',
@@ -454,17 +461,7 @@ sub _build_directory_name {
         $title = $self->title;
     }
 
-    return $self->_directory_name_from( $title );
-}
-
-sub _directory_name_from {
-    my $self = shift;
-    my ( $name ) = @_;
-
-    $name =~ s/\s+/_/g;
-    $name =~ s/[^\w\d]//g;
-
-    return $name;
+    return $self->result_source->schema->directory_name_from( $title );
 }
 
 sub _build_directory {

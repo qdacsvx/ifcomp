@@ -14,6 +14,9 @@ has '+html_prefix' => ( default => 1 );
 use Readonly;
 Readonly my $MAX_FILE_SIZE = 10485760;
 
+use Try::Tiny;
+use IFComp::Schema::Result::Entry;
+
 has_field 'title' => (
     required => 1,
     type => 'Text',
@@ -112,6 +115,28 @@ sub validate_cover_upload {
     if ( $field->value && not $field->value->filename =~ /\.png$/ ) {
         $field->add_error( "This doesn't appear to be a .png file.");
     }
+}
+
+sub validate_title {
+    my $self = shift;
+    my ( $field ) = @_;
+
+    try {
+        if ( $self->item->id ) {
+            IFComp::Schema->test_titles_for_oversimilarity(
+                $field->value,
+                $self->item->title,
+            );
+        }
+        else {
+            IFComp::Schema->test_titles_for_oversimilarity(
+                $field->value,
+            );
+        }
+    }
+    catch {
+        $field->add_error( "This title is too similar to another entry's title: $_");
+    };
 }
 
 1;
