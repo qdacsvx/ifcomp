@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::Comp;
 
 # Created by DBIx::Class::Schema::Loader
@@ -98,53 +99,50 @@ __PACKAGE__->table("comp");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "year",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 4 },
-  "intents_open",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "intents_close",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "entries_due",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "judging_begins",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "judging_ends",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "comp_closes",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "organizer",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 64 },
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "year",
+    { data_type => "char", default_value => "", is_nullable => 0, size => 4 },
+    "intents_open",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "intents_close",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "entries_due",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "judging_begins",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "judging_ends",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "comp_closes",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "organizer",
+    {   data_type     => "char",
+        default_value => "",
+        is_nullable   => 0,
+        size          => 64
+    },
 );
 
 =head1 PRIMARY KEY
@@ -171,7 +169,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("year", ["year"]);
+__PACKAGE__->add_unique_constraint( "year", ["year"] );
 
 =head1 RELATIONS
 
@@ -184,10 +182,10 @@ Related object: L<IFComp::Schema::Result::Entry>
 =cut
 
 __PACKAGE__->has_many(
-  "entries",
-  "IFComp::Schema::Result::Entry",
-  { "foreign.comp" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "entries",
+    "IFComp::Schema::Result::Entry",
+    { "foreign.comp" => "self.id" },
+    { cascade_copy   => 0, cascade_delete => 0 },
 );
 
 =head2 prizes
@@ -199,12 +197,11 @@ Related object: L<IFComp::Schema::Result::Prize>
 =cut
 
 __PACKAGE__->has_many(
-  "prizes",
-  "IFComp::Schema::Result::Prize",
-  { "foreign.comp" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "prizes",
+    "IFComp::Schema::Result::Prize",
+    { "foreign.comp" => "self.id" },
+    { cascade_copy   => 0, cascade_delete => 0 },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07043 @ 2015-12-27 04:55:28
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IYAhuBMI6CH5OD4iCQrx+w
@@ -212,25 +209,27 @@ __PACKAGE__->has_many(
 use DateTime::Moonpig;
 use Moose::Util::TypeConstraints;
 
-enum 'CompStatus', [qw(
-    not_begun
-    accepting_intents
-    closed_to_intents
-    closed_to_entries
-    open_for_judging
-    processing_votes
-    over
-) ];
+enum 'CompStatus', [
+    qw(
+        not_begun
+        accepting_intents
+        closed_to_intents
+        closed_to_entries
+        open_for_judging
+        processing_votes
+        over
+        )
+];
 
 has 'status' => (
-    is => 'ro',
-    isa => 'CompStatus',
+    is         => 'ro',
+    isa        => 'CompStatus',
     lazy_build => 1,
 );
 
 has 'winners' => (
-    is => 'ro',
-    isa => 'ArrayRef',
+    is         => 'ro',
+    isa        => 'ArrayRef',
     lazy_build => 1,
 );
 

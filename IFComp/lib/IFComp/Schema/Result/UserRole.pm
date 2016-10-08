@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::UserRole;
 
 # Created by DBIx::Class::Schema::Loader
@@ -62,27 +63,24 @@ __PACKAGE__->table("user_role");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "user",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "role",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "user",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "role",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -108,15 +106,14 @@ Related object: L<IFComp::Schema::Result::Role>
 =cut
 
 __PACKAGE__->belongs_to(
-  "role",
-  "IFComp::Schema::Result::Role",
-  { id => "role" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "RESTRICT",
-    on_update     => "RESTRICT",
-  },
+    "role",
+    "IFComp::Schema::Result::Role",
+    { id => "role" },
+    {   is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "RESTRICT",
+        on_update     => "RESTRICT",
+    },
 );
 
 =head2 user
@@ -128,17 +125,15 @@ Related object: L<IFComp::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "user",
-  "IFComp::Schema::Result::User",
-  { id => "user" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "RESTRICT",
-    on_update     => "RESTRICT",
-  },
+    "user",
+    "IFComp::Schema::Result::User",
+    { id => "user" },
+    {   is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "RESTRICT",
+        on_update     => "RESTRICT",
+    },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-23 16:14:35
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DpV0McEN6ofgc0wtTJ5PNw

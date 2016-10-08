@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::EntryUpdate;
 
 # Created by DBIx::Class::Schema::Loader
@@ -66,28 +67,25 @@ __PACKAGE__->table("entry_update");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "entry",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "note",
-  { data_type => "text", is_nullable => 0 },
-  "time",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 0,
-  },
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "entry",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "note",
+    { data_type => "text", is_nullable => 0 },
+    "time",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 0,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -113,12 +111,11 @@ Related object: L<IFComp::Schema::Result::Entry>
 =cut
 
 __PACKAGE__->belongs_to(
-  "entry",
-  "IFComp::Schema::Result::Entry",
-  { id => "entry" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+    "entry",
+    "IFComp::Schema::Result::Entry",
+    { id            => "entry" },
+    { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-23 16:14:35
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FyfVsVjb9q5+0uEiKpAtLQ

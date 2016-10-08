@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::Prize;
 
 # Created by DBIx::Class::Schema::Loader
@@ -101,58 +102,58 @@ __PACKAGE__->table("prize");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "comp",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "donor",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 64 },
-  "donor_email",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 64 },
-  "name",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 128 },
-  "notes",
-  { data_type => "text", is_nullable => 1 },
-  "recipient",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "url",
-  { data_type => "char", is_nullable => 1, size => 128 },
-  "category",
-  {
-    data_type => "enum",
-    default_value => "misc",
-    extra => {
-      list => [
-        "money",
-        "expertise",
-        "food",
-        "apparel",
-        "games",
-        "hardware",
-        "software",
-        "books",
-        "av",
-        "misc",
-        "special",
-      ],
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
     },
-    is_nullable => 0,
-  },
+    "comp",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "donor",
+    {   data_type     => "char",
+        default_value => "",
+        is_nullable   => 0,
+        size          => 64
+    },
+    "donor_email",
+    {   data_type     => "char",
+        default_value => "",
+        is_nullable   => 0,
+        size          => 64
+    },
+    "name",
+    {   data_type     => "char",
+        default_value => "",
+        is_nullable   => 0,
+        size          => 128
+    },
+    "notes",
+    { data_type => "text", is_nullable => 1 },
+    "recipient",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "url",
+    { data_type => "char", is_nullable => 1, size => 128 },
+    "category",
+    {   data_type     => "enum",
+        default_value => "misc",
+        extra         => {
+            list => [
+                "money", "expertise", "food",     "apparel",
+                "games", "hardware",  "software", "books",
+                "av",    "misc",      "special",
+            ],
+        },
+        is_nullable => 0,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -178,10 +179,10 @@ Related object: L<IFComp::Schema::Result::Comp>
 =cut
 
 __PACKAGE__->belongs_to(
-  "comp",
-  "IFComp::Schema::Result::Comp",
-  { id => "comp" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+    "comp",
+    "IFComp::Schema::Result::Comp",
+    { id            => "comp" },
+    { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
 );
 
 =head2 recipient
@@ -193,17 +194,15 @@ Related object: L<IFComp::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "recipient",
-  "IFComp::Schema::Result::User",
-  { id => "recipient" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "RESTRICT",
-    on_update     => "RESTRICT",
-  },
+    "recipient",
+    "IFComp::Schema::Result::User",
+    { id => "recipient" },
+    {   is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "RESTRICT",
+        on_update     => "RESTRICT",
+    },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-05-13 10:29:38
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dtC2iwNeWXuX1u51KyT/Ng

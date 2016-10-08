@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::FederatedSite;
 
 # Created by DBIx::Class::Schema::Loader
@@ -78,31 +79,28 @@ __PACKAGE__->table("federated_site");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "name",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
-  "api_key",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
-  "created",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "updated",
-  {
-    data_type => "timestamp",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "hashing_method",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "name",
+    { data_type => "varchar", is_nullable => 1, size => 255 },
+    "api_key",
+    { data_type => "varchar", is_nullable => 1, size => 255 },
+    "created",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "updated",
+    {   data_type                 => "timestamp",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "hashing_method",
+    { data_type => "varchar", is_nullable => 1, size => 255 },
 );
 
 =head1 PRIMARY KEY
@@ -116,7 +114,6 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
-
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 21:50:10
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:i7nM+TI1r6c1+aJ8pfKHqw

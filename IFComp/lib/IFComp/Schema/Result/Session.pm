@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::Session;
 
 # Created by DBIx::Class::Schema::Loader
@@ -58,12 +59,16 @@ __PACKAGE__->table("session");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 72 },
-  "expires",
-  { data_type => "integer", is_nullable => 1 },
-  "session_data",
-  { data_type => "text", is_nullable => 1 },
+    "id",
+    {   data_type     => "char",
+        default_value => "",
+        is_nullable   => 0,
+        size          => 72
+    },
+    "expires",
+    { data_type => "integer", is_nullable => 1 },
+    "session_data",
+    { data_type => "text", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -78,10 +83,8 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-07-09 21:52:30
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6lFaYQ3HpKL4SXYi7yGwQA
-
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

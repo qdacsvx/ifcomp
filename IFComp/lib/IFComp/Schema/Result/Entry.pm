@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::Entry;
 
 # Created by DBIx::Class::Schema::Loader
@@ -193,79 +194,79 @@ __PACKAGE__->table("entry");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "title",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 128 },
-  "subtitle",
-  { data_type => "char", is_nullable => 1, size => 128 },
-  "author",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "author_pseudonym",
-  { data_type => "char", is_nullable => 1, size => 64 },
-  "ifdb_id",
-  { data_type => "char", is_nullable => 1, size => 16 },
-  "comp",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 0,
-  },
-  "upload_time",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "place",
-  { data_type => "tinyint", is_nullable => 1 },
-  "blurb",
-  { data_type => "text", is_nullable => 1 },
-  "reveal_pseudonym",
-  { data_type => "tinyint", default_value => 0, is_nullable => 0 },
-  "miss_congeniality_place",
-  { data_type => "integer", is_nullable => 1 },
-  "email",
-  { data_type => "char", is_nullable => 1, size => 64 },
-  "is_disqualified",
-  { data_type => "tinyint", default_value => 0, is_nullable => 0 },
-  "average_score",
-  { data_type => "decimal", is_nullable => 1, size => [6, 2] },
-  "standard_deviation",
-  { data_type => "decimal", is_nullable => 1, size => [5, 2] },
-  "total_1",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_2",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_3",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_4",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_5",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_6",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_7",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_8",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_9",
-  { data_type => "tinyint", is_nullable => 1 },
-  "total_10",
-  { data_type => "tinyint", is_nullable => 1 },
-  "votes_cast",
-  { data_type => "integer", is_nullable => 1 },
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "title",
+    {   data_type     => "char",
+        default_value => "",
+        is_nullable   => 0,
+        size          => 128
+    },
+    "subtitle",
+    { data_type => "char", is_nullable => 1, size => 128 },
+    "author",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "author_pseudonym",
+    { data_type => "char", is_nullable => 1, size => 64 },
+    "ifdb_id",
+    { data_type => "char", is_nullable => 1, size => 16 },
+    "comp",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 0,
+    },
+    "upload_time",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "place",
+    { data_type => "tinyint", is_nullable => 1 },
+    "blurb",
+    { data_type => "text", is_nullable => 1 },
+    "reveal_pseudonym",
+    { data_type => "tinyint", default_value => 0, is_nullable => 0 },
+    "miss_congeniality_place",
+    { data_type => "integer", is_nullable => 1 },
+    "email",
+    { data_type => "char", is_nullable => 1, size => 64 },
+    "is_disqualified",
+    { data_type => "tinyint", default_value => 0, is_nullable => 0 },
+    "average_score",
+    { data_type => "decimal", is_nullable => 1, size => [ 6, 2 ] },
+    "standard_deviation",
+    { data_type => "decimal", is_nullable => 1, size => [ 5, 2 ] },
+    "total_1",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_2",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_3",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_4",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_5",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_6",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_7",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_8",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_9",
+    { data_type => "tinyint", is_nullable => 1 },
+    "total_10",
+    { data_type => "tinyint", is_nullable => 1 },
+    "votes_cast",
+    { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -292,7 +293,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("ifdb_id", ["ifdb_id"]);
+__PACKAGE__->add_unique_constraint( "ifdb_id", ["ifdb_id"] );
 
 =head1 RELATIONS
 
@@ -305,10 +306,10 @@ Related object: L<IFComp::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "author",
-  "IFComp::Schema::Result::User",
-  { id => "author" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+    "author",
+    "IFComp::Schema::Result::User",
+    { id            => "author" },
+    { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
 );
 
 =head2 comp
@@ -320,10 +321,10 @@ Related object: L<IFComp::Schema::Result::Comp>
 =cut
 
 __PACKAGE__->belongs_to(
-  "comp",
-  "IFComp::Schema::Result::Comp",
-  { id => "comp" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+    "comp",
+    "IFComp::Schema::Result::Comp",
+    { id            => "comp" },
+    { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
 );
 
 =head2 entry_updates
@@ -335,10 +336,10 @@ Related object: L<IFComp::Schema::Result::EntryUpdate>
 =cut
 
 __PACKAGE__->has_many(
-  "entry_updates",
-  "IFComp::Schema::Result::EntryUpdate",
-  { "foreign.entry" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "entry_updates",
+    "IFComp::Schema::Result::EntryUpdate",
+    { "foreign.entry" => "self.id" },
+    { cascade_copy    => 0, cascade_delete => 0 },
 );
 
 =head2 transcripts
@@ -350,10 +351,10 @@ Related object: L<IFComp::Schema::Result::Transcript>
 =cut
 
 __PACKAGE__->has_many(
-  "transcripts",
-  "IFComp::Schema::Result::Transcript",
-  { "foreign.entry" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "transcripts",
+    "IFComp::Schema::Result::Transcript",
+    { "foreign.entry" => "self.id" },
+    { cascade_copy    => 0, cascade_delete => 0 },
 );
 
 =head2 votes
@@ -365,12 +366,11 @@ Related object: L<IFComp::Schema::Result::Vote>
 =cut
 
 __PACKAGE__->has_many(
-  "votes",
-  "IFComp::Schema::Result::Vote",
-  { "foreign.entry" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "votes",
+    "IFComp::Schema::Result::Vote",
+    { "foreign.entry" => "self.id" },
+    { cascade_copy    => 0, cascade_delete => 0 },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-11-16 12:20:29
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:iF3wtgC7dnsOjVdunwh+jA
@@ -393,157 +393,155 @@ Readonly my $WINDOWS_REGEX => qr/\.exe$/i;
 Readonly my $HTML_REGEX    => qr/\.html?$/i;
 
 Readonly my @DEFAULT_PARCHMENT_CONTENT => (
-    'Cover.jpg',
-    'index.html',
-    'interpreter',
-    'play.html',
-    'Small Cover.jpg',
-    'style.css',
+    'Cover.jpg',       'index.html', 'interpreter', 'play.html',
+    'Small Cover.jpg', 'style.css',
 );
 Readonly my @DEFAULT_INFORM_CONTENT => qw(
     index.html
 );
 
 has 'sort_title' => (
-    is => 'ro',
-    isa => 'Maybe[Str]',
+    is         => 'ro',
+    isa        => 'Maybe[Str]',
     lazy_build => 1,
-    clearer => 'clear_sort_title',
-    predicate => 'has_sort_title',
+    clearer    => 'clear_sort_title',
+    predicate  => 'has_sort_title',
 );
 
 has 'directory' => (
-    is => 'ro',
-    isa => 'Path::Class::Dir',
+    is         => 'ro',
+    isa        => 'Path::Class::Dir',
     lazy_build => 1,
-    clearer => 'clear_directory',
+    clearer    => 'clear_directory',
 );
 
 has 'directory_name' => (
-    is => 'ro',
-    isa => 'Maybe[Str]',
+    is         => 'ro',
+    isa        => 'Maybe[Str]',
     lazy_build => 1,
-    clearer => 'clear_directory_name',
+    clearer    => 'clear_directory_name',
 );
 
 has 'main_file' => (
-    is => 'ro',
-    isa => 'Maybe[Path::Class::File]',
+    is         => 'ro',
+    isa        => 'Maybe[Path::Class::File]',
     lazy_build => 1,
-    clearer => 'clear_main_file',
+    clearer    => 'clear_main_file',
 );
 
 has 'walkthrough_file' => (
-    is => 'ro',
-    isa => 'Maybe[Path::Class::File]',
+    is         => 'ro',
+    isa        => 'Maybe[Path::Class::File]',
     lazy_build => 1,
-    clearer => 'clear_walkthrough_file',
+    clearer    => 'clear_walkthrough_file',
 );
 
 has 'main_directory' => (
-    is => 'ro',
-    isa => 'Path::Class::Dir',
+    is         => 'ro',
+    isa        => 'Path::Class::Dir',
     lazy_build => 1,
 );
 
 has 'walkthrough_directory' => (
-    is => 'ro',
-    isa => 'Path::Class::Dir',
+    is         => 'ro',
+    isa        => 'Path::Class::Dir',
     lazy_build => 1,
 );
 
 has 'content_directory' => (
-    is => 'ro',
-    isa => 'Path::Class::Dir',
+    is         => 'ro',
+    isa        => 'Path::Class::Dir',
     lazy_build => 1,
 );
 
 has 'cover_directory' => (
-    is => 'ro',
-    isa => 'Path::Class::Dir',
+    is         => 'ro',
+    isa        => 'Path::Class::Dir',
     lazy_build => 1,
 );
 
 has 'cover_file' => (
-    is => 'ro',
-    isa => 'Maybe[Path::Class::File]',
+    is         => 'ro',
+    isa        => 'Maybe[Path::Class::File]',
     lazy_build => 1,
 );
 
 has 'inform_game_file' => (
-    is => 'ro',
-    isa => 'Maybe[Path::Class::File]',
+    is         => 'ro',
+    isa        => 'Maybe[Path::Class::File]',
     lazy_build => 1,
 );
 
 has 'inform_game_js_file' => (
-    is => 'ro',
-    isa => 'Maybe[Path::Class::File]',
+    is         => 'ro',
+    isa        => 'Maybe[Path::Class::File]',
     lazy_build => 1,
 );
 
-enum 'Platform', [qw(
-    html
-    website
-    quixe2
-    parchment
-    inform
-    inform-website
-    tads
-    quest
-    windows
-    alan
-    other
-) ];
+enum 'Platform', [
+    qw(
+        html
+        website
+        quixe2
+        parchment
+        inform
+        inform-website
+        tads
+        quest
+        windows
+        alan
+        other
+        )
+];
 
 has 'contents_data' => (
-    is => 'ro',
-    init_arg => undef,
+    is         => 'ro',
+    init_arg   => undef,
     lazy_build => 1,
-    clearer => 'clear_contents_data',
+    clearer    => 'clear_contents_data',
 );
 
 has 'platform' => (
-    is => 'ro',
-    isa => 'Platform',
+    is         => 'ro',
+    isa        => 'Platform',
     lazy_build => 1,
-    clearer => 'clear_platform',
+    clearer    => 'clear_platform',
 );
 
 has 'play_file' => (
-    is => 'ro',
-    isa => 'Maybe[Path::Class::File]',
+    is         => 'ro',
+    isa        => 'Maybe[Path::Class::File]',
     lazy_build => 1,
-    clearer => 'clear_play_file',
+    clearer    => 'clear_play_file',
 );
 
 has 'is_qualified' => (
-    is => 'ro',
-    isa => 'Bool',
+    is         => 'ro',
+    isa        => 'Bool',
     lazy_build => 1,
 );
 
 has 'parchment_tag_text' => (
-    is => 'ro',
-    isa => 'Str',
+    is         => 'ro',
+    isa        => 'Str',
     lazy_build => 1,
 );
 
 has 'is_zcode' => (
-    is => 'ro',
-    isa => 'Bool',
+    is         => 'ro',
+    isa        => 'Bool',
     lazy_build => 1,
 );
 
 has 'has_extra_content' => (
-    is => 'ro',
-    isa => 'Bool',
+    is         => 'ro',
+    isa        => 'Bool',
     lazy_build => 1,
 );
 
 has 'latest_update' => (
-    is => 'ro',
-    isa => 'Maybe[IFComp::Schema::Result::EntryUpdate]',
+    is         => 'ro',
+    isa        => 'Maybe[IFComp::Schema::Result::EntryUpdate]',
     lazy_build => 1,
 );
 
@@ -563,32 +561,32 @@ after delete => sub {
     return $self->directory->rmtree;
 };
 
-
 around update => sub {
     my $orig = shift;
     my $self = shift;
 
-    for my $file_type ( qw( main walkthrough ) ) {
+    for my $file_type (qw( main walkthrough )) {
         my $column = "${file_type}_filename";
-        if ( $self->is_column_changed( $column ) && not $self->$column  ) {
+        if ( $self->is_column_changed($column) && not $self->$column ) {
             my $file_method = "${file_type}_file";
-            my $file = $self->$file_method;
+            my $file        = $self->$file_method;
             unless ( $file->remove ) {
                 die "Failed to remove $file. And: $file_method.";
             }
         }
     }
 
-    if ( $self->is_column_changed( 'title' ) && $self->has_sort_title ) {
+    if ( $self->is_column_changed('title') && $self->has_sort_title ) {
         $self->clear_sort_title;
     }
 
-    return $self->$orig( @_ );
+    return $self->$orig(@_);
 };
 
 sub _build_sort_title {
-    my $self = shift;
+    my $self  = shift;
     my $title = $self->title;
+
     # for right now, just remove initial articles
     $title =~ s/^(?:the|a|an) //i;
     return $title;
@@ -602,7 +600,7 @@ sub _build_directory_name {
 
 sub _directory_name_from {
     my $self = shift;
-    my ( $name ) = @_;
+    my ($name) = @_;
 
     $name =~ s/\s+/_/g;
     $name =~ s/[^\w\d]//g;
@@ -613,14 +611,13 @@ sub _directory_name_from {
 sub _build_directory {
     my $self = shift;
 
-    my $dir_path = Path::Class::Dir->new(
-        '',
+    my $dir_path =
+        Path::Class::Dir->new( '',
         $self->result_source->schema->entry_directory,
-        $self->id,
-    );
+        $self->id, );
 
     unless ( -e $dir_path ) {
-        mkdir ( $dir_path );
+        mkdir($dir_path);
     }
 
     return $dir_path;
@@ -630,52 +627,52 @@ sub _build_directory {
 sub _build_main_file {
     my $self = shift;
 
-    return ($self->main_directory->children( no_hidden => 1 ) )[0];
+    return ( $self->main_directory->children( no_hidden => 1 ) )[0];
 }
 
 sub _build_walkthrough_file {
     my $self = shift;
 
-    return ($self->walkthrough_directory->children( no_hidden => 1 ) )[0];
+    return ( $self->walkthrough_directory->children( no_hidden => 1 ) )[0];
 }
 
 sub _build_cover_file {
     my $self = shift;
 
-    return ($self->cover_directory->children( no_hidden => 1 ) )[0];
+    return ( $self->cover_directory->children( no_hidden => 1 ) )[0];
 }
 
 sub _build_main_directory {
     my $self = shift;
 
-    return $self->_build_subdir_named( 'main' );
+    return $self->_build_subdir_named('main');
 }
 
 sub _build_content_directory {
     my $self = shift;
 
-    return $self->_build_subdir_named( 'content' );
+    return $self->_build_subdir_named('content');
 }
 
 sub _build_walkthrough_directory {
     my $self = shift;
 
-    return $self->_build_subdir_named( 'walkthrough' );
+    return $self->_build_subdir_named('walkthrough');
 }
 
 sub _build_cover_directory {
     my $self = shift;
 
-    return $self->_build_subdir_named( 'cover' );
+    return $self->_build_subdir_named('cover');
 }
 
 sub _build_subdir_named {
     my $self = shift;
-    my ( $subdir_name ) = @_;
+    my ($subdir_name) = @_;
 
-    my $path = $self->directory->subdir( $subdir_name );
+    my $path = $self->directory->subdir($subdir_name);
     unless ( -e $path ) {
-        mkdir( $path );
+        mkdir($path);
     }
 
     return $path;
@@ -686,46 +683,57 @@ sub _build_contents_data {
 
     my $file = $self->main_file;
     if ( $self->main_file =~ /\.html?$/i ) {
-        return {'platform' => 'html', 'play_file' => $self->main_file->relative($self->content_directory)};
+        return {
+            'platform' => 'html',
+            'play_file' =>
+                $self->main_file->relative( $self->content_directory )
+        };
     }
 
     my @content_files;
-    $self->content_directory->recurse( callback => sub {
-        push @content_files, $_[0]->relative($self->content_directory);
-    } );
+    $self->content_directory->recurse(
+        callback => sub {
+            push @content_files, $_[0]->relative( $self->content_directory );
+        }
+    );
 
     # ensure a predictable order:
     @content_files = sort { $a cmp $b } @content_files;
 
-    if (_check_basenames([$I7_REGEX,
-                          qr/^index\.html?$/i,
-                          qr/^play\.html?$/i,
-                          qr/^parchment.*js$/i],
-                         \@content_files)
-    ) {
-        my $play_file = (grep { $_->basename =~ /^index\.html?$/i } @content_files)[0];
-        return {'platform' => 'parchment', 'play_file' => $play_file};
+    if (_check_basenames(
+            [   $I7_REGEX,          qr/^index\.html?$/i,
+                qr/^play\.html?$/i, qr/^parchment.*js$/i
+            ],
+            \@content_files
+        )
+        )
+    {
+        my $play_file =
+            ( grep { $_->basename =~ /^index\.html?$/i } @content_files )[0];
+        return { 'platform' => 'parchment', 'play_file' => $play_file };
     }
 
-    if (_check_basenames([$I7_REGEX,
-                          qr/^index\.html?$/i,
-                          qr/^quixe.*js$/i],
-                         \@content_files)
-    ) {
+    if (_check_basenames(
+            [ $I7_REGEX, qr/^index\.html?$/i, qr/^quixe.*js$/i ],
+            \@content_files
+        )
+        )
+    {
         if ( my $js_file = $self->inform_game_js_file ) {
-            my $fh = $js_file->openr;
+            my $fh         = $js_file->openr;
             my $first_line = <$fh>;
             if ( $first_line =~ /^\$\(document\)\.ready\(function\(\) \{/ ) {
-                my $play_file = (grep { $_->basename =~ /^index\.html?$/i } @content_files)[0];
-                return {'platform' => 'quixe2', 'play_file' => $play_file};
+                my $play_file = ( grep { $_->basename =~ /^index\.html?$/i }
+                        @content_files )[0];
+                return { 'platform' => 'quixe2', 'play_file' => $play_file };
             }
         }
     }
 
-    if (_check_basenames([$I7_REGEX, $HTML_REGEX], \@content_files)
-    ) {
-        my $play_file = (grep { $_->basename =~ /^index\.html?$/i } @content_files)[0];
-        return {'platform' => 'inform-website', 'play_file' => $play_file};
+    if ( _check_basenames( [ $I7_REGEX, $HTML_REGEX ], \@content_files ) ) {
+        my $play_file =
+            ( grep { $_->basename =~ /^index\.html?$/i } @content_files )[0];
+        return { 'platform' => 'inform-website', 'play_file' => $play_file };
     }
 
     # perhaps we need a better heuristic for picking the right file, if
@@ -733,35 +741,35 @@ sub _build_contents_data {
     # but for now just take the first successful match:
     for my $file (@content_files) {
         if ( $file->basename =~ /$HTML_REGEX/ ) {
-            return {'platform' => 'website', 'play_file' => $file};
+            return { 'platform' => 'website', 'play_file' => $file };
         }
         elsif ( $file->basename =~ /$I7_REGEX/ ) {
-            return {'platform' => 'inform', 'play_file' => $file};
+            return { 'platform' => 'inform', 'play_file' => $file };
         }
         elsif ( $file->basename =~ /$TADS_REGEX/ ) {
-            return {'platform' => 'tads', 'play_file' => $file};
+            return { 'platform' => 'tads', 'play_file' => $file };
         }
         elsif ( $file->basename =~ /$QUEST_REGEX/ ) {
-            return {'platform' => 'quest', 'play_file' => $file};
+            return { 'platform' => 'quest', 'play_file' => $file };
         }
         elsif ( $file->basename =~ /$ALAN_REGEX/ ) {
-            return {'platform' => 'alan', 'play_file' => $file};
+            return { 'platform' => 'alan', 'play_file' => $file };
         }
         elsif ( $file->basename =~ /$WINDOWS_REGEX/ ) {
-            return {'platform' => 'windows', 'play_file' => $file};
+            return { 'platform' => 'windows', 'play_file' => $file };
         }
     }
 
-    return {'platform' => 'other', 'play_file' => undef};
+    return { 'platform' => 'other', 'play_file' => undef };
 }
 
 sub _check_basenames {
-    my ($regexes, $files) = @_;
+    my ( $regexes, $files ) = @_;
     REGEXES: for my $regex (@$regexes) {
         for my $file (@$files) {
-            next REGEXES if ($file->basename =~ /$regex/);
+            next REGEXES if ( $file->basename =~ /$regex/ );
         }
-        return 0; # nobody matched, give up
+        return 0;    # nobody matched, give up
     }
     return 1;
 }
@@ -796,12 +804,14 @@ sub _build_inform_game_file {
     my $self = shift;
 
     my $inform_file;
-    $self->content_directory->recurse( callback => sub {
-        my ( $file ) = @_;
-        if ( $file->basename =~ /$I7_REGEX/ ) {
-            $inform_file = $file;
+    $self->content_directory->recurse(
+        callback => sub {
+            my ($file) = @_;
+            if ( $file->basename =~ /$I7_REGEX/ ) {
+                $inform_file = $file;
+            }
         }
-    } );
+    );
 
     return $inform_file;
 }
@@ -810,16 +820,18 @@ sub _build_inform_game_js_file {
     my $self = shift;
 
     my $js_file;
-    $self->content_directory->recurse( callback => sub {
-        my ( $file ) = @_;
-        if ( $file->basename =~ /\.js$/ ) {
-            my $filename = $file->basename;
-            $filename =~ s/\.js$//;
-            if ( $filename =~ /$I7_REGEX/ ) {
-                $js_file = $file;
+    $self->content_directory->recurse(
+        callback => sub {
+            my ($file) = @_;
+            if ( $file->basename =~ /\.js$/ ) {
+                my $filename = $file->basename;
+                $filename =~ s/\.js$//;
+                if ( $filename =~ /$I7_REGEX/ ) {
+                    $js_file = $file;
+                }
             }
         }
-    } );
+    );
 
     return $js_file;
 }
@@ -852,23 +864,24 @@ sub update_content_directory {
         # Clean up any Mac OS indexing folders that might have gotten caught in the
         # amber.
         my @dirs_to_delete;
-        $content_directory->recurse( callback => sub {
-            my ( $subdir ) = @_;
-            if ( $subdir->basename eq '__MACOSX' ) {
-                push @dirs_to_delete, $subdir;
+        $content_directory->recurse(
+            callback => sub {
+                my ($subdir) = @_;
+                if ( $subdir->basename eq '__MACOSX' ) {
+                    push @dirs_to_delete, $subdir;
+                }
             }
-        } );
-        for my $deletable_dir ( @dirs_to_delete ) {
+        );
+        for my $deletable_dir (@dirs_to_delete) {
             $deletable_dir->rmtree if -e $deletable_dir;
         }
 
         # If the result is a single subdir, move all its contents up a level,
         # then erase it.
-        if (
-            ( $content_directory->children == 1 )
-            && ( ($content_directory->children)[0]->is_dir )
-        ) {
-            my $sole_dir = ($content_directory->children)[0];
+        if (   ( $content_directory->children == 1 )
+            && ( ( $content_directory->children )[0]->is_dir ) )
+        {
+            my $sole_dir = ( $content_directory->children )[0];
             for my $child ( $sole_dir->children ) {
                 my $destination;
                 if ( $child->is_dir ) {
@@ -906,13 +919,11 @@ sub update_content_directory {
 sub _repair_game_js {
     my $self = shift;
 
-    $self->inform_game_js_file->spew(
-            q/$(document).ready(function() {/
+    $self->inform_game_js_file->spew( q/$(document).ready(function() {/
             . q/  GiLoad.load_run(null, '/
             . encode_base64( $self->inform_game_file->slurp, '' )
             . q/', 'base64');/
-            . q/});/
-    );
+            . q/});/ );
 }
 
 sub _create_parchment_page {
@@ -923,7 +934,7 @@ sub _create_parchment_page {
     # Search the content directory for the I7 file to link to.
     my $i7_file = $self->inform_game_file;
 
-    unless ( $i7_file ) {
+    unless ($i7_file) {
         die "Could not find an I7 file in this entry's content directory.";
     }
 
@@ -931,9 +942,9 @@ sub _create_parchment_page {
 
     my $entry_id = $self->id;
 
-    my $zcode_subdir = $self->is_zcode? 'zcode/' : '';
-    my $tag_text = $self->parchment_tag_text;
-    my $html = <<EOF
+    my $zcode_subdir = $self->is_zcode ? 'zcode/' : '';
+    my $tag_text     = $self->parchment_tag_text;
+    my $html         = <<EOF
 <!DOCTYPE html>
 <html>
 <head>
@@ -973,11 +984,11 @@ ifRecorder.story.version = "1";
 </html>
 
 EOF
-    ;
+        ;
 
-    my $html_file = $self->content_directory->file( 'index.html' );
-    my $html_fh = $html_file->openw;
-    $html_fh->binmode( ':utf8' );
+    my $html_file = $self->content_directory->file('index.html');
+    my $html_fh   = $html_file->openw;
+    $html_fh->binmode(':utf8');
 
     print $html_fh $html;
 
@@ -986,14 +997,15 @@ EOF
 sub _mangle_parchment_head {
     my $self = shift;
 
-    my $title = $self->title;
+    my $title    = $self->title;
     my $entry_id = $self->id;
 
     my $game_file = $self->inform_game_file->basename;
 
-    my $play_file = $self->content_directory->file( 'play.html' );
+    my $play_file = $self->content_directory->file('play.html');
 
     unless ( ( -e $play_file ) && $game_file ) {
+
         # No play.html? OK, this isn't a standard I7 "with interpreter" arrangement,
         # so we won't do anything.
         return;
@@ -1006,9 +1018,9 @@ sub _mangle_parchment_head {
     $play_html =~ s{<link.*?href="interpreter/.*?>}{}g;
 
     # Add new head tags.
-    my $tag_text = $self->parchment_tag_text;
-    my $zcode_subdir = $self->is_zcode? 'zcode/' : '';
-    my $head_html = <<EOF;
+    my $tag_text     = $self->parchment_tag_text;
+    my $zcode_subdir = $self->is_zcode ? 'zcode/' : '';
+    my $head_html    = <<EOF;
 $tag_text
 <script>
 parchment_options = {
@@ -1024,11 +1036,10 @@ ifRecorder.story.version = "1";
 </script>
 
 EOF
-    ;
 
     $play_html =~ s{</head>}{$head_html\n</head>};
 
-    $play_file->spew( $play_html );
+    $play_file->spew($play_html);
 
 }
 
@@ -1043,7 +1054,6 @@ sub _build_parchment_tag_text {
 <link rel="stylesheet" type="text/css" href="../../static/interpreter/zcode/parchment.css">
 <link rel="stylesheet" type="text/css" href="../../static/interpreter/zcode/style.css">
 EOF
-        ;
     }
     else {
         return <<EOF;
@@ -1054,7 +1064,6 @@ EOF
 <link rel="stylesheet" type="text/css" href="../../static/interpreter/i7-glkote.css">
 <link rel="stylesheet" type="text/css" href="../../static/interpreter/dialog.css">
 EOF
-        ;
     }
 }
 
@@ -1062,11 +1071,13 @@ sub _build_is_zcode {
     my $self = shift;
 
     my @content_files;
-    $self->content_directory->recurse( callback => sub {
-        push @content_files, $_[0]->basename;
-    } );
+    $self->content_directory->recurse(
+        callback => sub {
+            push @content_files, $_[0]->basename;
+        }
+    );
 
-    if ( grep { /$ZCODE_REGEX/ } @content_files ) {
+    if ( grep {/$ZCODE_REGEX/} @content_files ) {
         return 1;
     }
     else {
@@ -1081,10 +1092,9 @@ sub _build_has_extra_content {
     if ( $self->platform =~ /^inform/ ) {
         @default_list = @DEFAULT_INFORM_CONTENT;
     }
-    elsif (
-        ( $self->platform eq 'parchment' )
-        || ( $self->platform eq 'quixe2' )
-    ) {
+    elsif (( $self->platform eq 'parchment' )
+        || ( $self->platform eq 'quixe2' ) )
+    {
         @default_list = @DEFAULT_PARCHMENT_CONTENT;
     }
     else {
@@ -1092,9 +1102,7 @@ sub _build_has_extra_content {
     }
 
     my $lc = List::Compare->new(
-        [
-            map
-                { $_->basename }
+        [   map { $_->basename }
                 $self->content_directory->children( no_hidden => 1 )
         ],
         \@default_list,
@@ -1111,10 +1119,8 @@ sub _build_has_extra_content {
 sub _build_latest_update {
     my $self = shift;
 
-    my $updates_rs = $self->entry_updates->search(
-        {},
-        { order_by => 'time desc', }
-    );
+    my $updates_rs =
+        $self->entry_updates->search( {}, { order_by => 'time desc', } );
     return $updates_rs->next;
 }
 

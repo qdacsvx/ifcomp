@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::Role;
 
 # Created by DBIx::Class::Schema::Loader
@@ -55,15 +56,14 @@ __PACKAGE__->table("role");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "name",
-  { data_type => "char", default_value => "", is_nullable => 0, size => 8 },
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "name",
+    { data_type => "char", default_value => "", is_nullable => 0, size => 8 },
 );
 
 =head1 PRIMARY KEY
@@ -89,12 +89,11 @@ Related object: L<IFComp::Schema::Result::UserRole>
 =cut
 
 __PACKAGE__->has_many(
-  "user_roles",
-  "IFComp::Schema::Result::UserRole",
-  { "foreign.role" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+    "user_roles",
+    "IFComp::Schema::Result::UserRole",
+    { "foreign.role" => "self.id" },
+    { cascade_copy   => 0, cascade_delete => 0 },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-23 16:14:35
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KY6p+XEFjCQe44teXH0kBg

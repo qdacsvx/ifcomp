@@ -1,4 +1,5 @@
 use utf8;
+
 package IFComp::Schema::Result::AuthToken;
 
 # Created by DBIx::Class::Schema::Loader
@@ -73,34 +74,30 @@ __PACKAGE__->table("auth_token");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_auto_increment => 1,
-    is_nullable => 0,
-  },
-  "user",
-  {
-    data_type => "integer",
-    extra => { unsigned => 1 },
-    is_foreign_key => 1,
-    is_nullable => 1,
-  },
-  "token",
-  { data_type => "varchar", is_nullable => 1, size => 64 },
-  "updated",
-  {
-    data_type => "timestamp",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
-  "created",
-  {
-    data_type => "datetime",
-    datetime_undef_if_invalid => 1,
-    is_nullable => 1,
-  },
+    "id",
+    {   data_type         => "integer",
+        extra             => { unsigned => 1 },
+        is_auto_increment => 1,
+        is_nullable       => 0,
+    },
+    "user",
+    {   data_type      => "integer",
+        extra          => { unsigned => 1 },
+        is_foreign_key => 1,
+        is_nullable    => 1,
+    },
+    "token",
+    { data_type => "varchar", is_nullable => 1, size => 64 },
+    "updated",
+    {   data_type                 => "timestamp",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
+    "created",
+    {   data_type                 => "datetime",
+        datetime_undef_if_invalid => 1,
+        is_nullable               => 1,
+    },
 );
 
 =head1 PRIMARY KEY
@@ -126,21 +123,18 @@ Related object: L<IFComp::Schema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "user",
-  "IFComp::Schema::Result::User",
-  { id => "user" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "RESTRICT",
-    on_update     => "RESTRICT",
-  },
+    "user",
+    "IFComp::Schema::Result::User",
+    { id => "user" },
+    {   is_deferrable => 1,
+        join_type     => "LEFT",
+        on_delete     => "RESTRICT",
+        on_update     => "RESTRICT",
+    },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 21:48:39
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:f8OfZrOIxQKK8OmUBVuk6Q
-
 
 __PACKAGE__->meta->make_immutable;
 1;
